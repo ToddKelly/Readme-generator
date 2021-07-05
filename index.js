@@ -3,18 +3,18 @@ const inquirer = require("inquirer")
 const fs = require("fs")
 const path = require("path");
 const generateMarkdown = require("./utils/generateMarkdown");
-const Choices = require("inquirer/lib/objects/choices");
+const licenses = ["none", "MIT", "Apache", "Ms-PL", "EPL", "BSD"]
 //Array of questions for user input
 const questions = [
 
 {type: "Input",
 message: "What is your project title",
-name: "title",
+name: "Title",
 },
 
 {type: "input",
 message: "Please provide a description of your project",
-name: "description",
+name: "Description",
 },
 
 {type: "input",
@@ -24,30 +24,23 @@ name: "Table of Contents",
 
 {type: "input",
 message: "Please provide the installation instructions to run this application",
-name: "install"
+name: "Installation"
 },
 
 {type: "list",
 message: "Which license would you like to use",
-name: "license",
-Choices: [
-"none",
-"MIT",
-"Apache",
-"Ms-PL",
-"EPL",
-"BSD",
-],
+name: "Licenses",
+choices: licenses,
 },
 
 {type: "input",
 message:"Please provide how you will be using this application",
-name: "usage",
+name: "Usage",
 },
 
 {type: "input",
 message: "Who contributed to this application",
-name: "contributors",
+name: "Contributors",
 },
 
 {type: "input",
@@ -57,35 +50,31 @@ name: "test",
 
 {type: "input",
 message: "Please provide an email address",
-name: "email",
+name: "Email",
 },
 
 {type: "input",
 message: "please provide a GitHub username",
-name: "username",
+name: "Username",
 },
 
 ];
 
 //Function to write README file
-function writeToFile(fileName, data) {}
-
-// TODO: Create a function to initialize app
-function init() {
-    inquirer.prompt(questions)
-    console.log(fileName);
-    console.log(data);
-    if (error) {
-        return  console.log(error)
-    }
-else 
-{
-    console.log("README sucessfully created").then (function(answers) {
-    let template = generateMarkdown(answers)
-    writeToFile("README.md", template)})
-    console.log (data),
+function writeToFile(fileName, data) {
+    fs.writeFileSync(path.join(process.cwd(), fileName), data);
+        console.log('README Created')
 }
 
+// Function to initialize app
+function init() {
+    inquirer.prompt(questions)
+   
+.then (function(answers) {
+    let template = generateMarkdown(answers)
+    writeToFile("README.md", template)})
+
+    {}}
 
 // Function call to initialize app
-init();
+init()

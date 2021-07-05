@@ -1,10 +1,14 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
+const inquirer = require("inquirer");
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {}
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  return "(https://opensource.org/licenses/${license})"
+}
+
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
@@ -12,9 +16,38 @@ function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}
 
-`;
+  return `
+  
+  ## Title of Project:
+  ${data.title}
+  ## DESCRIPTION
+  ${data.Description}
+  ## Table of Contents
+  - [Description](#description)
+  - [Installation](#installation)
+  - [License](#license)
+  - [Usage](#usage)
+  - [Contribution](#contribution)
+  - [Test](#test)
+  ## Installation
+  ${data.installation}
+  ## License
+  ${data.license}
+  ## Usage
+  ${data.usage}
+  ## Contribution
+  ${data.contribution}
+  ## Test
+  ${data.test}
+ ## Questions
+ If you have any questions or concerns please contact me:
+ - Email: [${data.email}]
+ 
+ - Github: [${data.username}]
+`
 }
 
 module.exports = generateMarkdown;
+
+
