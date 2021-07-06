@@ -1,20 +1,26 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
+//Creates a function that returns a license badge based on which license is passed in
 const inquirer = require("inquirer");
-// If there is no license, return an empty string
-function renderLicenseBadge(license) {}
 
-// TODO: Create a function that returns the license link
+
 // If there is no license, return an empty string
-function renderLicenseLink(license) {
-  return "(https://opensource.org/licenses/${license})"
+function renderLicenseBadge(license) {
+ return `[![license:](https://img.shields.io/badge/license-${license}-yellow.svg)](https://opensource.org/licenses/${license})`
+
 }
 
+// Creates a function that returns the license link
+// If there is no license, return an empty string
+function renderLicenseLink(license) {
+  return `(https://opensource.org/licenses/${license})`
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
 
-// TODO: Create a function to generate markdown for README
+}
+
+// Creates a function to generate markdown for README
 function generateMarkdown(data) {
 
   return `
@@ -22,7 +28,7 @@ function generateMarkdown(data) {
   ## Title of Project:
   ${data.title}
   ## DESCRIPTION
-  ${data.Description}
+  ${data.description}
   ## Table of Contents
   - [Description](#description)
   - [Installation](#installation)
@@ -33,18 +39,19 @@ function generateMarkdown(data) {
   ## Installation
   ${data.installation}
   ## License
-  ${data.license}
+  ${renderLicenseBadge(data.license)}
+  ${renderLicenseLink(data.license)}
   ## Usage
   ${data.usage}
   ## Contribution
-  ${data.contribution}
+  ${data.contributors}
   ## Test
   ${data.test}
  ## Questions
  If you have any questions or concerns please contact me:
- - Email: [${data.email}]
+ - Email: [${data.email}](mailto:donkeyskates21@gmail.com)
  
- - Github: [${data.username}]
+ - Github: [${data.username}](https://github.com/ToddKelly)
 `
 }
 
