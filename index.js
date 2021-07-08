@@ -5,7 +5,6 @@ const path = require("path");
 const generateMarkdown = require("./utils/generateMarkdown.js");
 const { clear } = require("console");
 
-const licenses = ["none", "MIT", "Apache", "Ms-PL", "EPL", "BSD"]
 
 //Array of questions for user input
 const questions = [
@@ -32,8 +31,8 @@ name: "installation"
 
 {type: "list",
 message: "Which license would you like to use",
-name: "licenses",
-choices: licenses,
+name: "license",
+choices: ["[none]", "MIT", "Apache 2.0", "GNU GPL v3", "Mozilla Public License 2.0"],
 },
 
 {type: "input",
